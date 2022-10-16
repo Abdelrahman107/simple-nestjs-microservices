@@ -1,0 +1,31 @@
+# make a docker-compose to orchestrate the containers microservice-app and microservice-client
+
+version: '3.7'
+
+services:
+
+
+  client: 
+    image: microservice-client
+    build: ./microservice-client
+    volumes:
+      - ./microservice-client:/client/src/app
+    container_name: microservice-client
+    depends_on:
+      - app
+    ports:
+      - 3000:3000
+     
+
+  app:
+    image: microservice-app
+    build: ./microservice-app
+    container_name: microservice-app
+    volumes:
+      - ./microservice-app:/usr/src/app
+    
+
+       
+
+    
+
